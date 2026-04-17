@@ -1,0 +1,138 @@
+# 📊 Real-Time Server Monitoring Dashboard
+
+> **"I monitor server health in real time using Grafana dashboards that show live CPU and memory graphs."**
+
+---
+
+## 🏫 Project Info
+
+| Field | Details |
+|---|---|
+| **University** | Vishwakarma University, Pune |
+| **Course** | DevOps (MCA24304) |
+| **Programme** | MCA – Semester 4 |
+| **Academic Year** | 2025–2026 |
+| **Guide** | Dr. Bharati P. Kawade |
+| **Students** | Jatin L. Mahale (31242349), Tejas Narkhede (31242424) |
+
+---
+
+## 📌 About This Project
+
+This project is a **real-time server monitoring dashboard** built using:
+- **Grafana** – For visualization and dashboards
+- **Prometheus** – For collecting and storing metrics
+- **Node Exporter** – For exposing CPU, memory, disk, and network stats
+- **Docker Compose** – To run everything with one command
+
+The dashboard shows **live graphs** that auto-refresh every 5 seconds, so anyone can immediately see server health at a glance.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Version | Purpose |
+|---|---|---|
+| Grafana | Latest | Dashboard & visualization |
+| Prometheus | Latest | Metrics collection & storage |
+| Node Exporter | Latest | System metrics (CPU, RAM, Disk) |
+| Docker | 20.x+ | Containerized deployment |
+| Docker Compose | 3.8 | Multi-container orchestration |
+
+---
+
+## 📁 Project Structure
+
+```
+grafana-monitoring-dashboard/
+│
+├── docker-compose.yml       # Starts all services with one command
+├── prometheus.yml           # Prometheus scrape configuration
+├── dashboard.json           # Grafana dashboard export (importable)
+├── README.md                # This file
+│
+└── screenshots/
+    ├── dashboard-overview.png
+    ├── cpu-graph.png
+    └── memory-gauge.png
+```
+
+---
+
+## 🚀 How to Run (Setup Steps)
+
+### Prerequisites
+- Docker installed: https://docs.docker.com/get-docker/
+- Docker Compose installed
+- Port 3000, 9090, 9100 should be free
+
+### Step 1 — Clone the Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/grafana-monitoring-dashboard.git
+cd grafana-monitoring-dashboard
+```
+
+### Step 2 — Start the Stack
+```bash
+docker-compose up -d
+```
+This starts **Grafana**, **Prometheus**, and **Node Exporter** automatically.
+
+### Step 3 — Open Grafana
+- Open browser → `http://localhost:3000`
+- Login: **Username:** `admin` | **Password:** `admin123`
+
+### Step 4 — Add Prometheus as Data Source
+1. Go to **Configuration → Data Sources**
+2. Click **Add data source**
+3. Select **Prometheus**
+4. Set URL: `http://prometheus:9090`
+5. Click **Save & Test** → Should show ✅ green
+
+### Step 5 — Import Dashboard
+1. Go to **Dashboards → Import**
+2. Click **Upload JSON file**
+3. Select `dashboard.json` from this repo
+4. Click **Import**
+5. 🎉 Dashboard is now live with all panels!
+
+---
+
+## 📊 Dashboard Panels
+
+| Panel | Metric | Visualization |
+|---|---|---|
+| CPU Usage | `node_cpu_seconds_total` | Time Series Graph |
+| Memory Usage | `node_memory_MemAvailable_bytes` | Gauge |
+| Disk I/O | `node_disk_read_bytes_total` | Time Series Graph |
+| Network Traffic | `node_network_receive_bytes_total` | Time Series Graph |
+| System Uptime | `node_boot_time_seconds` | Stat Panel |
+
+---
+
+## 📸 Screenshots
+
+> See `screenshots/` folder for dashboard images.
+
+---
+
+## 🛑 To Stop the Project
+
+```bash
+docker-compose down
+```
+
+---
+
+## 📚 References
+
+- Grafana Documentation: https://grafana.com/docs/
+- Prometheus Docs: https://prometheus.io/docs/
+- Node Exporter: https://github.com/prometheus/node_exporter
+- Docker Docs: https://docs.docker.com/
+
+---
+
+## 📄 License
+
+This project is submitted for academic purposes at Vishwakarma University, Pune.
